@@ -1,16 +1,10 @@
-import express,{Request,Response} from 'express'
-const app = express()
-
-
+import express from "express";
+const app = express();
+import cors from "cors";
+import { getInfoAbout } from "./api/controllers/about";
 app.use(express.json());
+app.use(cors());
 
+app.get("/david", getInfoAbout);
 
-
-
-
-
-app.get('/',(req, res)=>res.status(200).json({message:'hello word'}))
-
-
-
-app.listen(process.env.PORT || 3000, ()=>console.log('listening on port 3000'))
+app.listen(process.env.PORT || 3000);

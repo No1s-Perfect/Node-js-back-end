@@ -5,6 +5,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const app = (0, express_1.default)();
+const cors_1 = __importDefault(require("cors"));
+const about_1 = require("./api/controllers/about");
 app.use(express_1.default.json());
-app.get('/', (req, res) => res.status(200).json({ message: 'hello word' }));
-app.listen(process.env.PORT || 3000, () => console.log('listening on port 3000'));
+app.use((0, cors_1.default)());
+app.get("/david", about_1.getInfoAbout);
+app.listen(process.env.PORT || 3000);
